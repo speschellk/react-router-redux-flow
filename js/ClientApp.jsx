@@ -1,14 +1,25 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landing from './Landing';
+import Search from './Search';
+
+const FourOhFour = () => <h1>404</h1>;
 
 const App = () => (
-  <HashRouter>
+  <BrowserRouter>
+    {/* BrowserRouter is a higher-order component:
+    introduces behavior but doesn't render any markup */}
     <div className="app">
-      <Route exact path="/" component={Landing} />
+      <Switch>
+        {/* If this exact path is matched, render this component */}
+        <Route exact path="/" component={Landing} />
+        <Route path="/search" component={Search} />
+        {/* If no match, render this component */}
+        <Route component={FourOhFour} />
+      </Switch>
     </div>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 render(<App />, document.getElementById('app'));

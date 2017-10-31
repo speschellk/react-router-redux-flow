@@ -11,7 +11,10 @@ module.exports = {
   },
   devServer: {
     // name of the path on the server
-    publicPath: '/public/'
+    publicPath: '/public/',
+    // client will worry about the routing; server should not
+    // allows BrowserRouter to work
+    historyApiFallback: true
   },
   resolve: {
     // specifies order of resolution of extensions

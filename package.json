@@ -8,6 +8,7 @@
   "scripts": {
     "api": "node ratingsAPI.js",
     "build": "webpack",
+    "dev": "webpack-dev-server",
     "format": "prettier --write --single-quote --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "test": "echo \"Error: no test specified\" && exit 1",
