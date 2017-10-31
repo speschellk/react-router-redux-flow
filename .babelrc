@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "react",
+    // use this instead of "es2015" so that it can keep up with browser versions
+   ["env", {
+     "targets": {
+       "browsers": "last 2 versions"
+     },
+     // smaller bundle because you're not doing crazy stuff that needs additional inclusions
+     "loose": true,
+     // tell Babel to skip transpiling the modules -- Webpack will work on it
+     "modules": false
+   }]
+  ]
+}
