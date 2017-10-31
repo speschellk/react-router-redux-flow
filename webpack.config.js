@@ -21,6 +21,12 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
         // any file with extension .js or .jsx, run through babel
         test: /\.jsx?$/,
         loader: 'babel-loader'
