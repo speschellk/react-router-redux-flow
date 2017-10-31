@@ -9,6 +9,10 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
+  devServer: {
+    // name of the path on the server
+    publicPath: '/public/'
+  },
   resolve: {
     // specifies order of resolution of extensions
     extensions: ['.js', '.jsx', '.json']
@@ -20,12 +24,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
       {
         // any file with extension .js or .jsx, run through babel
         test: /\.jsx?$/,
