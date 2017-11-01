@@ -4,9 +4,17 @@ import ShowCard from './ShowCard';
 
 const Search = () => (
   <div className="search">
-    {preload.shows.map(show => (
-      <ShowCard show={show} />
-    ))}
+    <div>
+      {preload.shows.map(show => (
+        <ShowCard
+          key={show.imdbID}
+          poster={show.poster}
+          title={show.title}
+          year={show.year}
+          description={show.description}
+        />
+      ))}
+    </div>
   </div>
 );
 
