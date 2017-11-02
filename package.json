@@ -11,7 +11,8 @@
     "dev": "webpack-dev-server",
     "format": "prettier --write --single-quote --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:update": "jest -u",
     "watch": "webpack --watch"
   },
   "dependencies": {
@@ -68,5 +69,8 @@
     "react-hot-loader": "^3.1.1",
     "react-test-renderer": "^16.0.0",
     "webpack-dev-server": "^2.9.3"
+  },
+  "jest": {
+    "snapshotSerializers": ["jest-serializer-enzyme"] // tells jest how to serialize enzyme component into a snapshot
   }
 }
