@@ -12,6 +12,7 @@
     "format": "prettier --write --single-quote --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:update": "jest -u",
     "watch": "webpack --watch"
   },
