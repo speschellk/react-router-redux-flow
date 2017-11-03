@@ -2,15 +2,18 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // tagged template literal
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   width: 32%;
   border: 2px solid;
   border-radius: 4px;
   margin-bottom: 25px;
   padding-right: 10px;
   overflow: hidden;
+  color: black;
+  text-decoration: none;
 `;
 
 const Image = styled.img`
@@ -19,13 +22,8 @@ const Image = styled.img`
   margin-right: 10px;
 `;
 
-const ShowCard = (props: {
-  poster: string,
-  title: string,
-  year: string,
-  description: string
-}) => (
-  <Wrapper>
+const ShowCard = (props: Show) => (
+  <Wrapper to={`/details/${props.imdbID}`}>
     <Image
       alt={`${props.title} Show Poster`}
       src={`/public/img/posters/${props.poster}`}
