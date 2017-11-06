@@ -10,7 +10,6 @@ const Search = (props: { searchTerm: string, shows: Array<Show> }) => (
     <Header
       searchTerm={props.searchTerm}
       showSearch
-      handleSearchTermChange={props.handleSearchTermChange}
     />
     <div>
       {props.shows
@@ -25,6 +24,8 @@ const Search = (props: { searchTerm: string, shows: Array<Show> }) => (
   </div>
 );
 
+// return object whose properties will be spread over Search
+// passes props into search
 const mapStateToProps = state => ({
   searchTerm: state.searchTerm
 });
