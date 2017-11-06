@@ -41,6 +41,7 @@ class Search extends Component {
                 year={show.year}
                 description={show.description}
                 imdbID={show.imdbID}
+                {...show}
               />
             ))}
         </div>
