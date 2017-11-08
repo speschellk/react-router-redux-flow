@@ -17,20 +17,17 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    // name of the path on the server
-    publicPath: '/public/',
-    // client will worry about the routing; server should not
-    // allows BrowserRouter to work
-    historyApiFallback: true
+    publicPath: '/public/',   // name of the path on the server
+    historyApiFallback: true,  // allows BrowserRouter to work
+    stats: {
+      colors: true,
+      reasons: true,
+      chunks: true,
+      hash: true
+    }
   },
   resolve: {
-    // specifies order of resolution of extensions
     extensions: ['.js', '.jsx', '.json']
-  },
-  stats: {
-    colors: true,
-    reasons: true,
-    chunks: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -39,7 +36,6 @@ module.exports = {
   module: {
     rules: [
       {
-        // any file with extension .js or .jsx, run through babel
         test: /\.jsx?$/,
         loader: 'babel-loader'
       }
