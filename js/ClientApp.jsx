@@ -10,9 +10,9 @@ const renderApp = () => {
 
 renderApp();
 
-// module var is specific to webpack
+// 'module' var is injected from webpack
 if (module.hot) {
-  // any time App changes, rerender the whole app (in dev)
+  // any time App changes, rerender the whole app
   module.hot.accept('./App', () => {
     renderApp();
   });

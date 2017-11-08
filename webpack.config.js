@@ -30,8 +30,8 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.HotModuleReplacementPlugin(), // enable HMR: retain application state
+    new webpack.NamedModulesPlugin() // use relative path of the module displayed when HMR is enabled
   ],
   module: {
     rules: [

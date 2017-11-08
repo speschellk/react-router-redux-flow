@@ -1,6 +1,7 @@
 // @flow
 
 import { createStore, compose, applyMiddleware } from 'redux';
+// looks at every action produced, and calls it if it's a function
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 
