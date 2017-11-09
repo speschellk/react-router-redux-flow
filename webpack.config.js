@@ -3,49 +3,50 @@ const webpack = require('webpack');
 
 const config = {
   context: __dirname,
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './js/ClientApp.jsx'
-  ],
-  devtool: 'cheap-eval-source-map',
+  entry: ['./js/ClientApp.jsx'],
+  devtool: process.env.NODE_ENV === 'development' ? 'cheap-eval-source-map' : false,
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/public/'
   },
   devServer: {
     hot: true,
-    publicPath: '/public/',   // name of the path on the server
-    historyApiFallback: true,  // allows BrowserRouter to work
-    stats: {
-      colors: true,
-      reasons: true,
-      chunks: true,
-      hash: true
-    }
+    publicPath: '/public/',
+    historyApiFallback: true
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(), // enable HMR: retain application state
-    new webpack.NamedModulesPlugin() // use relative path of the module displayed when HMR is enabled
-  ],
+  stats: {
+    colors: true,
+    reasons: true,
+    chunks: false
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
       {
+        enforce: 'pre',
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        include: [path.resolve('js'), path.resolve('node_modules/preact-compat/src')]
       }
     ]
   }
+};
+
+if (process.env.NODE_ENV === 'development') {
+  config.entry.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000');
 }
 
-if (process.env.NODE_ENV === 'production') {
-  config.entry = './js/ClientApp.jsx';
-  config.devtool = false;
-  plugins = [];
-}
 module.exports = config;

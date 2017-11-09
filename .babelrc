@@ -1,31 +1,30 @@
 {
   "presets": [
     "react",
-    // use this instead of "es2015" so that it can keep up with browser versions
-    [
-      "env",
-      {
-        "targets": {
-          "browsers": "last 2 versions"
-        },
-        // smaller bundle because you're not doing crazy stuff that needs additional inclusions
-        "loose": true,
-        // tell Babel to skip transpiling the modules -- Webpack will work on it
-        "modules": false
-      }
-    ]
+    ["env", {
+      "targets": {
+        "browsers": "last 2 versions"
+      },
+      "loose": true,
+      "modules": false
+    }]
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "babel-plugin-syntax-dynamic-import",  // lets Babel understand the import syntax
-    "babel-plugin-dynamic-import-webpack", // translates import statements to require.ensure
+    "babel-plugin-syntax-dynamic-import",
+    "babel-plugin-dynamic-import-webpack",
+    "babel-plugin-transform-decorators-legacy",
     "babel-plugin-transform-class-properties"
   ],
   "env": {
+    "server": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    },
+    "development": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    },
     "test": {
-      "plugins": [
-        "babel-plugin-transform-es2015-modules-commonjs"
-      ]
+      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }
