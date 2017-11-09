@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAPIDetails, addAPIData } from './actionCreators';
+import { getAPIDetails, addAPIData } from './asyncActions';
 import axios from 'axios';
 import Header from './Header';
 import Spinner from './Spinner';
